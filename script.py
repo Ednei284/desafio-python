@@ -38,6 +38,7 @@ try:
                 saldo -= valor
                 extrato += f"Saque: R$ {valor:.2f}\n"
                 numero_de_saques += 1
+                print(f"Saque de R$ {valor:.2f} realizado com sucesso!")
             else:
                 print("Valor inválido!")
         elif option == "e":
