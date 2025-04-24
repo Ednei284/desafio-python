@@ -3,8 +3,8 @@ menu = """
 [d] Depositar
 [s] Sacar
 [e] Extrato
-[q] Sair
-
+[q] Sair ou CRTL + C para sair
+Escolha uma opção: 
 
 => """
 saldo = 0
