@@ -11,7 +11,7 @@ O script foi criado para simular uma interface bancária para cliente. Ele foi p
 1. Certifique-se de ter o Python instalado em sua máquina (versão 3.x ou superior).
 2. Clone este repositório ou faça o download do arquivo `script.py`.
 3. Navegue até o diretório onde o arquivo está localizado.
-4. Execute o script com o comando python ou python3 dependendio do alias do seu S.O:
+4. Execute o script com o comando `python` ou `python3` dependendio do alias do seu S.O:
     ```bash
     python script.py
     ```
