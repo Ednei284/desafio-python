@@ -1,3 +1,5 @@
+from datetime import date
+
 menu = """
 
 [d] Depositar
@@ -12,35 +14,53 @@ extrato = ""
 limite = 500
 numero_de_saques = 0
 limite_de_saques = 3
+transacoes = 0
+data_atual = date.today()
+data_formatada = data_atual.strftime("%d/%m/%Y")
 try:
     while True:
         option = input(menu).strip().lower()
         if option == "d":
-            valor = float(input("Digite o valor a ser depositado: "))
-            if valor > 0:
-                saldo += valor
-                extrato += f"Depósito: R$ {valor:.2f}\n"
-            else:
-                print("Valor inválido!")
+            if transacoes == 10 and data_atual:
+                print("Você atingiu o limite de 10 transações por dia.")
+                continue
+            while True:
+                try:
+                    valor = float(input("Digite o valor a ser depositado: "))
+                    if valor > 0:
+                        saldo += valor
+                        extrato += f"Depósito: R$ {valor:.2f} data: {data_atual}\n"
+                        transacoes += 1
+                        print(transacoes)
+                        break
+                    else:
+                        print("Valor inválido!")
+                except ValueError:
+                    print("Valor inválido!")
         elif option == "s":
-            valor = float(input("Digite o valor a ser sacado: "))
-            excedeu_saldo = valor > saldo
-            excedeu_limite = valor > limite
-            excedeu_saques = numero_de_saques >= limite_de_saques
-
-            if excedeu_saldo:
-                print("Você não tem saldo suficiente.")
-            elif excedeu_limite:
-                print("Você não pode sacar mais que R$ 500,00.")
-            elif excedeu_saques:
-                print("Número máximo de saques atingido.")
-            elif valor > 0:
-                saldo -= valor
-                extrato += f"Saque: R$ {valor:.2f}\n"
-                numero_de_saques += 1
-                print(f"Saque de R$ {valor:.2f} realizado com sucesso!")
-            else:
-                print("Valor inválido!")
+            if transacoes == 10 and data_atual:
+                print("Você atingiu o limite de 10 transações por dia.")
+                continue
+            while True:
+                try:
+                    valor = float(input("Digite o valor a ser sacado: "))
+                    if valor > saldo:
+                        print("Valor maior que o saldo disponível!")
+                    elif valor > limite:
+                        print("Valor maior que o limite de saque!")
+                    elif numero_de_saques >= limite_de_saques:
+                        print("Número máximo de saques atingido!")
+                    elif valor <= 0:
+                        print("Valor inválido!")
+                    else:
+                        saldo -= valor
+                        extrato += f"Saque: R$ {valor:.2f} data: {data_atual}\n"
+                        numero_de_saques += 1
+                        transacoes += 1
+                        print(transacoes)
+                        break
+                except ValueError:
+                    print("Valor inválido!")
         elif option == "e":
             print("\n================= EXTRATO =================")
             print(extrato if extrato else "Não foram realizadas movimentações.")
