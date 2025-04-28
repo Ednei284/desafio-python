@@ -34,11 +34,13 @@ O script está organizado da seguinte forma:
   - O sistema limita o número de transações diárias a 10 (entre depósitos e saques).
   - Caso o limite seja atingido, o programa informa o usuário e impede novas transações.
 - **Exemplo de execução**:
+
   ```bash
   python script.py
 
   ```
 
+```
 [d] Depositar
 [s] Sacar
 [e] Extrato
@@ -55,4 +57,3 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar
 ## Licença
 
 Este projeto está licenciado sob a licença [MIT](LICENSE).
-```
