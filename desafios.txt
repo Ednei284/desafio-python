@@ -1,9 +1,0 @@
-separar as funcionalidades em funções
-criar duas novas funções 
-    - criar usuários: nome, data de nascimento, somente os numeros do cpf e apenas um usuario por cpf e endereco; logradouro-bairro-cidade/estado. 
-    - criar conta tem agencia,numero da conta e usuário. o usuario pode ter varias contas, mas uma conta so pode pertencer a apenas um usuario.
-    - saque deve receber keyword only: saldo, valor, extrato, limite, num_saque e lim_saque retorno saldo e extrato
-    - deposito deve receber positional only: saldo, valor, extrato retorno saldo e extrato
-    - extrato deve receber positional only e keyword only, argumentos posicionais: saldo, argumentos nomeados: extrato
-    - funções adicionais: listar contas
-    - filtrar na lista de usuarios pelo cpf para cada usuario da lita para poder criar conta.

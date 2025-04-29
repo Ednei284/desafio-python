@@ -4,7 +4,7 @@ Este projeto contém um script Python (`script.py`) desenvolvido como parte do d
 
 ## Objetivo
 
-O script foi criado para simular uma interface bancária para cliente. Ele foi projetado para ser simples de usar e eficiente.
+O script foi criado para simular uma interface bancária para clientes. Ele foi projetado para ser simples de usar e eficiente.
 
 ## Como usar
 
@@ -25,29 +25,54 @@ O script foi criado para simular uma interface bancária para cliente. Ele foi p
 
 O script está organizado da seguinte forma:
 
-- **Funções principais**: Depósito, Saque, Extrato e Sair
-- **Entrada e saída**: O sistema recebe um número e devolve uma mensagem após fazer a operação
+- **Funções principais**:
+
+  - **Depósito**: Permite ao usuário depositar um valor na conta. Valida se o valor é positivo.
+  - **Saque**: Permite ao usuário sacar um valor da conta. Valida:
+    - Se o valor não excede o saldo disponível.
+    - Se o valor não excede o limite de saque por transação (R$ 500,00).
+    - Se o número máximo de saques diários (3) não foi atingido.
+  - **Extrato**: Exibe todas as transações realizadas (depósitos e saques) e o saldo atual.
+  - **Criar Usuário**: Permite cadastrar novos usuários com informações como CPF, nome, data de nascimento e endereço. Valida se o CPF já está cadastrado.
+  - **Criar Conta**: Permite criar contas bancárias associadas a usuários existentes. Cada conta é identificada por um número único e vinculada a uma agência.
+  - **Listar Contas**: Exibe todas as contas cadastradas, incluindo informações como agência, número da conta e nome do usuário.
+  - **Sair**: Permite encerrar o programa.
+
 - **Validação de entradas**:
+
   - O sistema valida se o usuário inseriu um número válido ao realizar depósitos ou saques.
   - Caso o usuário insira letras ou caracteres inválidos, o programa exibe uma mensagem de erro e solicita o valor novamente.
+
 - **Limite de transações diárias**:
   - O sistema limita o número de transações diárias a 10 (entre depósitos e saques).
   - Caso o limite seja atingido, o programa informa o usuário e impede novas transações.
-- **Exemplo de execução**:
 
-  ```bash
-  python script.py
+## Exemplo de execução
 
-  ```
-
-```
+```plaintext
 [d] Depositar
 [s] Sacar
 [e] Extrato
-[q] Sair
+[nc] Nova conta
+[lc] Listar contas
+[nu] Novo usuário
+[q] Sair ou CTRL + C para sair
 
-=>
+=> d
+Digite o valor a ser depositado: 100
+Depósito realizado com sucesso!
 
+=> s
+Digite o valor a ser sacado: 50
+Saque realizado com sucesso!
+
+=> e
+================ EXTRATO ================
+Depósito: R$ 100.00
+Saque: R$ 50.00
+
+Saldo: R$ 50.00
+=========================================
 ```
 
 ## Contribuição

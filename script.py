@@ -118,18 +118,24 @@ def main():
         while True:
             option = menu()
             if option == "d":
-                valor = float(input("Digite o valor a ser depositado: "))
-                saldo, extrato = depositar(saldo, valor, extrato)
+                try:
+                    valor = float(input("Digite o valor a ser depositado: "))
+                    saldo, extrato = depositar(saldo, valor, extrato)
+                except ValueError:
+                    print("Valor inválido!")
             elif option == "s":
-                valor = float(input("Digite o valor a ser sacado: "))
-                saldo, extrato = depositar(
-                    saldo=saldo,
-                    valor=valor,
-                    extrato=extrato,
-                    limite=limite,
-                    numero_saques=numero_saques,
-                    limite_saque=LIMITE_SAQUE,
-                )
+                try:
+                    valor = float(input("Digite o valor a ser sacado: "))
+                    saldo, extrato = sacar(
+                        saldo=saldo,
+                        valor=valor,
+                        extrato=extrato,
+                        limite=limite,
+                        numero_saques=numero_saques,
+                        limite_saque=LIMITE_SAQUE,
+                    )
+                except ValueError:
+                    print("Valor inválido!")
             elif option == "e":
                 exibir_extrato(saldo, extrato=extrato)
             elif option == "nu":
